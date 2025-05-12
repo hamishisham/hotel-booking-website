@@ -1,32 +1,85 @@
-// Layout.jsx
-import { Box } from "@mui/material";
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
-const DashboardLayout = ({ children }) => {
-  const sidebarWidth = 240;
-  const headerHeight = 64;
+const drawerWidth = 240;
+
+const DashboardLayout = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <Box sx={{ width: `${sidebarWidth}px`, flexShrink: 0 }}>
+    <>
+      {/* Sidebar Drawer for Mobile */}
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: drawerWidth,
+            bgcolor: "#0D47A1",
+            color: "#fff",
+          },
+        }}
+      >
+        <Sidebar />
+      </Drawer>
+
+      {/* Permanent Sidebar for Desktop */}
+      <Box
+        sx={{
+          width: { xs: 0, md: drawerWidth },
+          flexShrink: 0,
+          display: { xs: "none", md: "block" },
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "100vh",
+          zIndex: 1200,
+          bgcolor: "#0D47A1",
+        }}
+      >
         <Sidebar />
       </Box>
 
-      <Box sx={{ flexGrow: 1 }}>
-        <Header height={headerHeight} />
-        <Box
-          sx={{
-            mt: `${headerHeight}px`,
-            p: 3,
-            minHeight: `calc(100vh - ${headerHeight}px)`,
-            bgcolor: "#f5f7fa",
-          }}
-        >
-          {children}
-        </Box>
+      {/* Header */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: { xs: 0, md: `${drawerWidth}px` },
+          right: 0,
+          height: "60px",
+          zIndex: 1100,
+        }}
+      >
+        <Header onMenuClick={handleDrawerToggle} />
       </Box>
-    </Box>
+
+      {/* Main Content */}
+      <Box
+        sx={{
+          marginTop: "60px",
+          marginLeft: { xs: 0, md: `${drawerWidth}px` },
+          padding: 3,
+          bgcolor: theme.palette.mode === "dark" ? "#121212" : "#f5f7fa",
+          minHeight: "100vh",
+        }}
+      >
+        <Outlet />
+      </Box>
+    </>
   );
 };
 

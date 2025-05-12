@@ -8,8 +8,8 @@ const Dashboard = () => {
 
   return (
     <Box sx={{ mt: 5, textAlign: 'center' }}>
-      <Typography variant="h4">Welcome {user?.name}</Typography>
-    </Box>
+<Typography variant="h4">Welcome {user?.name || "Guest"}</Typography>
+</Box>
   );
 };
 

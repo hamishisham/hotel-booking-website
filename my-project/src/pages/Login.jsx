@@ -22,31 +22,29 @@ const Login = () => {
 
   const validate = () => {
     const newErrors = {};
-
     if (!email.trim() || !email.includes('@')) {
       newErrors.email = "Enter a valid email";
     }
     if (!password.trim()) {
       newErrors.password = "Password is required";
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // منع إعادة تحميل الصفحة عند الضغط على "Login"
     if (!validate()) return;
 
     try {
-      const { data: users } = await axios.get("https://6816015332debfe95dbd18f8.mockapi.io/api/v1/users");
-
+      const { data: users } = await axios.get("http://localhost:3001/users");
       const foundUser = users.find(
         (u) => u.email === email && u.password === password
       );
 
       if (foundUser) {
         login(foundUser);
-        navigate(foundUser.role === 'admin' ? '/admin' : '/dashboard');
+        navigate(foundUser.role === 'admin' ? '/dashboard' : '/booknest');
       } else {
         setErrors({ password: "Invalid email or password" });
       }
@@ -112,41 +110,43 @@ const Login = () => {
           Login
         </Typography>
 
-        <TextField
-          fullWidth
-          label="Email"
-          margin="normal"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (errors.email) setErrors({ ...errors, email: '' });
-          }}
-          error={!!errors.email}
-          helperText={errors.email}
-        />
+        <form onSubmit={handleLogin}>
+          <TextField
+            fullWidth
+            label="Email"
+            margin="normal"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (errors.email) setErrors({ ...errors, email: '' });
+            }}
+            error={!!errors.email}
+            helperText={errors.email}
+          />
 
-        <TextField
-          fullWidth
-          label="Password"
-          type="password"
-          margin="normal"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            if (errors.password) setErrors({ ...errors, password: '' });
-          }}
-          error={!!errors.password}
-          helperText={errors.password}
-        />
+          <TextField
+            fullWidth
+            label="Password"
+            type="password"
+            margin="normal"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (errors.password) setErrors({ ...errors, password: '' });
+            }}
+            error={!!errors.password}
+            helperText={errors.password}
+          />
 
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{ mt: 2 }}
-          onClick={handleLogin}
-        >
-          Login
-        </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 2 }}
+            type="submit"
+          >
+            Login
+          </Button>
+        </form>
 
         <Typography
           variant="body2"

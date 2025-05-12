@@ -66,7 +66,7 @@ const Register = () => {
     };
 
     try {
-      await axios.post('https://6816015332debfe95dbd18f8.mockapi.io/api/v1/users', newUser);
+      await axios.post("http://localhost:3001/users", newUser);
       navigate('/');
     } catch (error) {
       console.error('Registration failed', error);

@@ -1,0 +1,139 @@
+{
+  "users": [
+    {
+      "id": "5eeb",
+      "name": "Hamis Hisham Mahmoud Abdelazeem",
+      "email": "hamisz@gmail.com",
+      "password": "Hamis@12345",
+      "age": 26,
+      "address": "jjjjjjjjjjjjjjjjjjjjjjjj",
+      "phone": "01555234780",
+      "isLoggedIn": false,
+      "role": "admin"
+    },
+    {
+      "id": "admin1",
+      "name": "Admin User",
+      "email": "admin@hotel.com",
+      "password": "Admin@1234",
+      "age": 35,
+      "address": "Admin City",
+      "phone": "01111111111",
+      "isLoggedIn": false,
+      "role": "admin"
+    },
+    {
+      "id": "4fdb",
+      "name": "Hana Mohamed",
+      "email": "hana@gmail.com",
+      "password": "Hana@12345",
+      "age": 26,
+      "address": "address 1",
+      "phone": "01555234782",
+      "isLoggedIn": false,
+      "role": "user"
+    }
+  ],
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Mena House Hotel",
+      "location": "Giza, Egypt",
+      "description": "A luxurious hotel with a view of the Pyramids of Giza.",
+      "rating": 4.7,
+      "image": "https://example.com/images/mena-house.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Fairmont Nile City Hotel",
+      "location": "Cairo, Egypt",
+      "description": "A five-star hotel located along the Nile River, offering world-class amenities.",
+      "rating": 4.8,
+      "image": "https://example.com/images/fairmont-nile-city.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sofitel Cairo El Gezirah",
+      "location": "Cairo, Egypt",
+      "description": "A luxury hotel offering a stunning Nile view and exceptional service.",
+      "rating": 4.6,
+      "image": "https://example.com/images/sofitel-cairo.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sharm El Sheikh Marriott Resort",
+      "location": "Sharm El Sheikh, Egypt",
+      "description": "A beachside resort with premium rooms and a relaxing atmosphere.",
+      "rating": 4.5,
+      "image": "https://example.com/images/sharm-marriott.jpg"
+    },
+    {
+      "id": 5,
+      "name": "The Nile Ritz-Carlton",
+      "location": "Cairo, Egypt",
+      "description": "Located in the heart of Cairo, this hotel offers luxury and historical charm.",
+      "rating": 4.9,
+      "image": "https://example.com/images/nile-ritz-carlton.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Concorde El Salam Hotel",
+      "location": "Cairo, Egypt",
+      "description": "A prestigious hotel offering the best in luxury accommodations and services.",
+      "rating": 4.4,
+      "image": "https://example.com/images/concorde-el-salam.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Steigenberger Aqua Magic",
+      "location": "Hurghada, Egypt",
+      "description": "A resort offering beautiful views of the Red Sea and world-class amenities.",
+      "rating": 4.7,
+      "image": "https://example.com/images/steigenberger-hurghada.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Hilton Alexandria Corniche",
+      "location": "Alexandria, Egypt",
+      "description": "A modern hotel overlooking the Mediterranean Sea with excellent service.",
+      "rating": 4.5,
+      "image": "https://example.com/images/hilton-alexandria.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Steigenberger Makadi",
+      "location": "Hurghada, Egypt",
+      "description": "A luxurious resort with private beaches and top-tier amenities.",
+      "rating": 4.8,
+      "image": "https://example.com/images/steigenberger-makadi.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Four Seasons Hotel Alexandria",
+      "location": "Alexandria, Egypt",
+      "description": "A prestigious hotel offering unparalleled luxury and views of the Mediterranean.",
+      "rating": 4.9,
+      "image": "https://example.com/images/four-seasons-alexandria.jpg"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "userId": "5eeb",
+      "hotelId": 2,
+      "roomNumber": "304",
+      "checkIn": "2025-06-10",
+      "checkOut": "2025-06-12",
+      "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "userId": "5eeb",
+      "hotelId": 1,
+      "roomNumber": "105",
+      "checkIn": "2025-07-01",
+      "checkOut": "2025-07-05",
+      "status": "pending"
+    }
+  ]
+}
