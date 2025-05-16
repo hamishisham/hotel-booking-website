@@ -5,7 +5,7 @@ const HotelContext = createContext();
 
 export const useHotels = () => useContext(HotelContext);
 
-const API_URL = "http://localhost:3001/hotels"; // Adjust port if needed
+const API_URL = "https://hotel-json-server-production.up.railway.app/hotels"; // Adjust port if needed
 
 export const HotelProvider = ({ children }) => {
   const [hotels, setHotels] = useState([]);

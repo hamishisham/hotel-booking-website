@@ -57,7 +57,7 @@ const Users = () => {
   };
 
   const handleSave = () => {
-    axios.put(`http://localhost:3001/users/${selectedUser.id}`, selectedUser)
+    axios.put(`https://hotel-json-server-production.up.railway.app/${selectedUser.id}`, selectedUser)
       .then(() => {
         setUsers(users.map(u => u.id === selectedUser.id ? selectedUser : u));
         setViewOpen(false);

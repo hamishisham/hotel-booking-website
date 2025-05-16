@@ -5,7 +5,7 @@ import axios from "axios";
 const UserContext = createContext();
 export const useUsers = () => useContext(UserContext);
 
-const API_URL = "https://6816015332debfe95dbd18f8.mockapi.io/api/v1/users";
+const API_URL = "https://hotel-json-server-production.up.railway.app/users";
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);

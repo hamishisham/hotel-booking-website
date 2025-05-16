@@ -5,7 +5,7 @@ const BookingContext = createContext();
 
 export const useBookings = () => useContext(BookingContext);
 
-const API_URL = "http://localhost:3001/bookings";
+const API_URL = "https://hotel-json-server-production.up.railway.app/bookings";
 
 export const BookingProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);

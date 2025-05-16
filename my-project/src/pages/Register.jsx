@@ -66,7 +66,7 @@ const Register = () => {
     };
 
     try {
-      await axios.post("http://localhost:3001/users", newUser);
+      await axios.post("https://hotel-json-server-production.up.railway.app/users", newUser);
       navigate('/');
     } catch (error) {
       console.error('Registration failed', error);

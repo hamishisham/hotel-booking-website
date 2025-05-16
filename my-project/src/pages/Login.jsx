@@ -37,7 +37,7 @@ const Login = () => {
     if (!validate()) return;
 
     try {
-      const { data: users } = await axios.get("http://localhost:3001/users");
+      const { data: users } = await axios.get("https://hotel-json-server-production.up.railway.app/users");
       const foundUser = users.find(
         (u) => u.email === email && u.password === password
       );
