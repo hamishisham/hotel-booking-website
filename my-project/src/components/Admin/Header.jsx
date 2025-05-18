@@ -53,7 +53,6 @@ const Header = ({ height = 64, onMenuClick }) => {
         {/* Right Section */}
         <Box display="flex" alignItems="center" gap={2}>
           <AdminDropdownMenu />
-          <DarkModeToggle />
         </Box>
       </Toolbar>
     </AppBar>

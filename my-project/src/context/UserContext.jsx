@@ -1,4 +1,3 @@
-// src/context/UserContext.js
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
@@ -31,12 +30,23 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (updatedUser) => {
+    try {
+      const response = await axios.put(`${API_URL}/${updatedUser.id}`, updatedUser);
+      setUsers((prev) =>
+        prev.map((user) => (user.id === updatedUser.id ? response.data : user))
+      );
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
   useEffect(() => {
     fetchUsers();
   }, []);
 
   return (
-    <UserContext.Provider value={{ users, loading, deleteUser }}>
+    <UserContext.Provider value={{ users, loading, deleteUser, updateUser }}>
       {children}
     </UserContext.Provider>
   );

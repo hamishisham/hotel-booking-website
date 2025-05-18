@@ -55,8 +55,21 @@ export const HotelProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchHotels(); // Fetch all hotels on initial load
+    fetchHotels(); // Fetch
+    //  all hotels on initial load
   }, [fetchHotels]);
+
+
+const updateHotel = async (updatedHotel) => {
+  try {
+    const response = await axios.put(`${API_URL}/${updatedHotel.id}`, updatedHotel);
+    setHotels((prev) =>
+      prev.map((hotel) => (hotel.id === updatedHotel.id ? response.data : hotel))
+    );
+  } catch (error) {
+    console.error("Error updating hotel:", error);
+  }
+};
 
   return (
     <HotelContext.Provider
@@ -67,6 +80,7 @@ export const HotelProvider = ({ children }) => {
         fetchHotels,
         deleteHotel,
         addHotel,
+        updateHotel, 
         selectedCity, // 🆕 Exported
       }}
     >
